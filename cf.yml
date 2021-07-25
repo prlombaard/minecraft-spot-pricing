@@ -17,13 +17,13 @@ Parameters:
 
   InstanceType:
     Type: String
-    Description: "t3.medium is a good cost effective instance, 1 VCPU and 3.75 GB of RAM with moderate network performance. Change at your discretion. https://aws.amazon.com/ec2/instance-types/."
-    Default: t3.medium
+    Description: "c5.large is a good cost effective instance, 2 VCPU and 4 GB of RAM with moderate network performance. Change at your discretion. https://aws.amazon.com/ec2/instance-types/."
+    Default: c5.large
 
   SpotPrice:
     Type: String
-    Description: "A t3.medium shouldn't cost more than a cent per hour. Note: Leave this blank to use on-demand pricing."
-    Default: "0.05"
+    Description: "A c5.large shouldn't cost more than a cent per hour. Note: Leave this blank to use on-demand pricing. AWS Spot Instance Pricing. https://aws.amazon.com/ec2/spot/pricing/"
+    Default: "0.0344"
 
   KeyPairName:
     Type: String
@@ -58,11 +58,12 @@ Parameters:
   MinecraftTypeTag:
     Type: String
     Description: "(Examples include SPIGOT, BUKKIT, TUINITY, etc) Refer to tag descriptions available here: https://github.com/itzg/docker-minecraft-server)"
+    Default: FORGE
 
   AdminPlayerNames:
     Type: String
     Description: Op/Administrator Players
-    Default: ''
+    Default: 'prlombaard,SleepyBeast9448'
 
   Difficulty:
     Type: String
@@ -77,29 +78,32 @@ Parameters:
   Whitelist:
     Type: String
     Description: Usernames of your friends
-    Default: ''
+    Default: 'prlombaard,SleepyBeast9448'
 
   MinecraftVersion:
     Type: String
     Description: Server minecraft version
-    Default: ''
+    Default: '1.17.1'
 
   Memory:
     Type: String
     Description: How much Memory to allocate for the JVM
-    Default: '1G'
+    Default: '2G'
 
   Seed:
     Type: String
     Description: The seed used to generate the world
+    Default: 108865405
 
   MaxPlayers:
     Type: Number
     Description: Max number of players that can connect simultaneously (default 20)
+    Default: 2
 
   ViewDistance:
     Type: Number
     Description: Max view radius (in chunks) the server will send to the client (default 10)
+    Default: 10
 
   GameMode:
     Type: String
@@ -114,7 +118,7 @@ Parameters:
   LevelType:
     Type: String
     Description: "Options: DEFAULT, FLAT, LARGEBIOMES, AMPLIFIED, CUSTOMIZED, BUFFET, BIOMESOP (v1.12-), BIOMESOPLENTY (v1.15+)"
-    Default: DEFAULT
+    Default: AMPLIFIED
     AllowedValues:
     - DEFAULT
     - FLAT
@@ -128,7 +132,7 @@ Parameters:
   EnableRollingLogs:
     Type: String
     Description: "By default the log file will grow without limit. Set to true to use a rolling log strategy."
-    Default: false
+    Default: true
     AllowedValues:
     - true
     - false
@@ -136,6 +140,7 @@ Parameters:
   Timezone:
     Type: String
     Description: "Change the server's timezone. Use the canonical name of the format: Area/Location (e.g. America/New_York)"
+    Default: 'Africa/Johannesburg'
 
 Metadata:
   AWS::CloudFormation::Interface:
